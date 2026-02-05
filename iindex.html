@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>For Itzia 💗</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand&display=swap" rel="stylesheet">
+
+<style>
+body{
+margin:0;height:100vh;overflow:hidden;
+display:flex;justify-content:center;align-items:center;
+background:linear-gradient(135deg,#ffd1e6,#ff9ccc,#ff6bb3);
+font-family:'Pacifico',cursive;
+}
+
+.card{width:330px;height:460px;perspective:1200px}
+.inner{width:100%;height:100%;transition:1s;transform-style:preserve-3d}
+.card.open .inner{transform:rotateY(180deg)}
+
+.side{
+position:absolute;width:100%;height:100%;
+border-radius:25px;
+box-shadow:0 15px 35px rgba(0,0,0,.3);
+display:flex;align-items:center;justify-content:center;
+text-align:center;padding:20px;
+backface-visibility:hidden;
+}
+
+.front{background:#ff4fa3;color:white;font-size:26px}
+.back{background:white;color:#ff4fa3;transform:rotateY(180deg);font-family:'Quicksand'}
+
+.btn{
+background:#ff4fa3;color:white;border:none;
+padding:10px 18px;border-radius:20px;margin:6px
+}
+
+.float{position:absolute;animation:float linear infinite}
+@keyframes float{from{transform:translateY(100vh)}to{transform:translateY(-10vh)}}
+
+#yesScreen{
+display:none;position:fixed;inset:0;
+background:#ff6bb3;color:white;font-size:38px;
+justify-content:center;align-items:center;flex-direction:column
+}
+</style>
+</head>
+
+<body>
+
+<iframe width="0" height="0"
+src="https://www.youtube.com/embed/LtRk8L3KZK0?autoplay=1&loop=1&playlist=LtRk8L3KZK0"
+allow="autoplay"></iframe>
+
+<div class="card" onclick="this.classList.toggle('open')">
+<div class="inner">
+
+<div class="side front">
+🧸🎀 For Itzia 💗<br>Tap me
+</div>
+
+<div class="side back">
+<div>
+<h2>Itzia ❤️</h2>
+<p>Will you be my Valentine?</p>
+<button class="btn" onclick="yes(event)">Yes 💘</button>
+<button class="btn" id="no">No 🙈</button>
+</div>
+</div>
+
+</div>
+</div>
+
+<div id="yesScreen">💗 SHE SAID YES 💗<br>🧸🎀💖🌸</div>
+
+<script>
+/* floating teddy bears, ribbons, hearts */
+const icons=["🧸","🎀","💗","💖","🌸"];
+setInterval(()=>{
+let e=document.createElement("div");
+e.className="float";
+e.innerHTML=icons[Math.floor(Math.random()*icons.length)];
+e.style.left=Math.random()*100+"vw";
+e.style.fontSize=(20+Math.random()*25)+"px";
+e.style.animationDuration=(4+Math.random()*4)+"s";
+document.body.appendChild(e);
+setTimeout(()=>e.remove(),8000);
+},200);
+
+/* running no button */
+const no=document.getElementById("no");
+no.onmouseover=()=>{
+no.style.position="fixed";
+no.style.left=Math.random()*80+"vw";
+no.style.top=Math.random()*80+"vh";
+}
+
+/* celebration */
+function yes(e){
+e.stopPropagation();
+document.getElementById("yesScreen").style.display="flex";
+}
+</script>
+
+</body>
+</html>
